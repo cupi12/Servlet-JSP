@@ -14,4 +14,4 @@
 <button type="submit">등록하기</button>
 </form>
 </body>
-</html>
+</html>   
