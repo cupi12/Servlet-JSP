@@ -12,21 +12,26 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class MemberUpdateForm
  */
-@WebServlet("/MemberUpdateForm.do") //타겟 세팅값
-public class MemberUpdateForm extends HttpServlet {
+@WebServlet("/MemberUpdate.do") //타겟 세팅값
+public class MemberUpdate extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public MemberUpdateForm() {
+    public MemberUpdate() {
         super();
         // TODO Auto-generated constructor stub
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//파라미터 받기
-		String id = request.getParameter("id");
+		//파라미터 받기 -> 세션에서 id 받오기
+		
+		String id = (String) request.getSession().getAttribute("loginId");
+		if(id == null) {
+			response.sendRedirect("/edu/member/login.jsp");
+			return;
+		}
 		//서비스 로직 처리(회원정보 1건 조회)
 		MemberDAO dao = new MemberDAO();
 		MemberVO vo = dao.getMember(id);

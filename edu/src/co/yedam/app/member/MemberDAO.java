@@ -3,12 +3,12 @@ package co.yedam.app.member;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
 
 import co.yedam.app.common.ConnectionManager;
 
 public class MemberDAO {
 
-	
 	public int memberInsert(MemberVO member) {
 		int r = 0;
 		Connection conn = null;
@@ -45,22 +45,22 @@ public class MemberDAO {
 		}
 
 		return r;
-	}//end of insert
+	}// end of insert
 
-	public MemberVO getMember(String id) {
-		MemberVO vo = new MemberVO();
+	public ArrayList<MemberVO> getMemberList() {
+		ArrayList<MemberVO> list = new ArrayList<MemberVO>();
 		try {
-			//1. DB연결
+			// 1. DB연결
 			Connection conn = null;
 			PreparedStatement psmt = null;
-			//2. 쿼리 준비
+			// 2. 쿼리 준비
 			conn = ConnectionManager.getConnnect();
-			String sql = "select * FROM member where id=?";
+			String sql = "select * FROM member order by id";
 			psmt = conn.prepareStatement(sql);
-			psmt.setString(1, id);
-			//3. statement 실행
+			// 3. statement 실행
 			ResultSet rs = psmt.executeQuery();
-			if(rs.next()) {
+			while (rs.next()) {
+				MemberVO vo = new MemberVO();
 				vo.setId(rs.getString("id"));
 				vo.setPwd(rs.getString("pwd"));
 				vo.setName(rs.getString("name"));
@@ -69,15 +69,47 @@ public class MemberDAO {
 				vo.setReligion(rs.getString("religion"));
 				vo.setIntroduction(rs.getString("introduction"));
 				vo.setRegdt(rs.getString("regdt"));
-			}else {
-				
+				list.add(vo);
 			}
-			//4. 결과 저장
-		}
-		catch(Exception e){
+			// 4. 결과 저장
+		} catch (Exception e) {
 			e.printStackTrace();
-		}finally {
-			//5. 연결 해제
+		} finally {
+			// 5. 연결 해제
+		}
+		return list;
+	}
+
+	public MemberVO getMember(String id) {// 단건조회
+		MemberVO vo = new MemberVO();
+		try {
+			// 1. DB연결
+			Connection conn = null;
+			PreparedStatement psmt = null;
+			// 2. 쿼리 준비
+			conn = ConnectionManager.getConnnect();
+			String sql = "select * FROM member where id=?";
+			psmt = conn.prepareStatement(sql);
+			psmt.setString(1, id);
+			// 3. statement 실행
+			ResultSet rs = psmt.executeQuery();
+			if (rs.next()) {
+				vo.setId(rs.getString("id"));
+				vo.setPwd(rs.getString("pwd"));
+				vo.setName(rs.getString("name"));
+				vo.setHobby(rs.getString("hobby"));
+				vo.setGender(rs.getString("gender"));
+				vo.setReligion(rs.getString("religion"));
+				vo.setIntroduction(rs.getString("introduction"));
+				vo.setRegdt(rs.getString("regdt"));
+			} else {
+
+			}
+			// 4. 결과 저장
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			// 5. 연결 해제
 		}
 		return vo;
 	}
@@ -118,6 +150,5 @@ public class MemberDAO {
 
 		return r;
 	}
-	
-	
-}//end of class
+
+}// end of class

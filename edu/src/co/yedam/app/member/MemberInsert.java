@@ -60,8 +60,10 @@ public class MemberInsert extends HttpServlet {
 		out.print("<br>introduction =" + introduction);
 		out.print("<br>처리된 건수 : " + r);
 		
-//		request.getParameterValues("hobby");
-//		response.getWriter().append("<br>아이디 = " + id).append("<br>패스워드 = " + pwd).append("<br>취미 = " + hobbys);
+		//3.회원 목록 이동 /include, forward, sendRedirect
+		response.sendRedirect("/edu/MemberList.do");
+//		request.getRequestDispatcher("/MemberList.do").forward(request, response);
+		
 
 	}
 
