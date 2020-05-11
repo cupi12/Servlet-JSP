@@ -28,19 +28,10 @@ public class MemberList extends HttpServlet {
 		// 3.결과출력 or 결과 저장해서 view 포워드
 		response.setContentType("text/html; charset=utf-8");
 		PrintWriter out = response.getWriter();
-		request.getRequestDispatcher("/common/menu.jsp").include(request, response); // 메뉴바와 테이블 함께 보이게 하기 위해 include시켜줌
-		out.print("<h3> 회원목록</h3>");
-		out.print("<table border=1>");
-		for (MemberVO vo : list) {
-			out.print("<tr>");
-			out.print("<td>" +vo.getId()+ "</td>");
-			out.print("<td>" +vo.getName() +"</td>");
-			out.print("<td>" +vo.getGender() +"</td>");
-			out.print("<td>" +vo.getHobby() +"</td>");
-			out.print("<td>" +vo.getReligion() +"</td>");
-			out.print("</tr>");
-		}
-		out.print("</table>");
+		request.setAttribute("list", list);
+		request.getRequestDispatcher("/member/memberList.jsp").forward(request, response); // 메뉴바와 테이블 함께 보이게 하기 위해 include시켜줌
+		
+		
 
 	}
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)

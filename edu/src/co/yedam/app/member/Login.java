@@ -25,19 +25,19 @@ public class Login extends HttpServlet {
 		MemberVO vo = dao.getMember(id);
 		response.setContentType("text/html; charset=utf-8");
 		PrintWriter out = response.getWriter();
-		request.getRequestDispatcher("common/menu.jsp").include(request,response);
+
 		// id로 조회, 조회 결과가 없으면 id가 없다.
 		if (vo.getId() == null) { // id 오류
 			out.print("id 오류!");
 		} else if (!vo.getPwd().equals(pwd)) { // pwd 오류
 			out.print("pwd 오류!");
 		} else { // 로그인 성공
-			out.print("로그인 성공");
 			// 세션에 로그인 여부를 저장
 			HttpSession session = request.getSession();
-			request.getSession().setAttribute("loginId", id);
-			request.getSession().setAttribute("loginMember", vo);
-			
+			session.setAttribute("loginId", id);
+			session.setAttribute("loginMember", vo);
+			request.getRequestDispatcher("common/menu.jsp").include(request,response);
+			out.print("로그인 성공");
 		}
 		// 조회가 된 경우에는 password가 맞는지 검사
 		// 로그인

@@ -24,4 +24,7 @@
     <servlet-name>TestServ</servlet-name>
     <url-pattern>/test4.do</url-pattern>
     </servlet-mapping>
+    <session-config>
+    <session-timeout>30</session-timeout>
+    </session-config>
 </web-app>

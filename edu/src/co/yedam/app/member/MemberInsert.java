@@ -61,7 +61,8 @@ public class MemberInsert extends HttpServlet {
 		out.print("<br>처리된 건수 : " + r);
 		
 		//3.회원 목록 이동 /include, forward, sendRedirect
-		response.sendRedirect("/edu/MemberList.do");
+		String contextPath = getServletContext().getContextPath();
+		response.sendRedirect(contextPath + "/MemberList.do");
 //		request.getRequestDispatcher("/MemberList.do").forward(request, response);
 		
 

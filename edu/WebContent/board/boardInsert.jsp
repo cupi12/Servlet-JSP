@@ -13,7 +13,6 @@
 제목 : <input type="text" name ="title" id ="title"><br>
 내용 : <input type="text" name ="contents" id ="contents"><br>
 작성자 : <input type="text" name ="id" id ="id" value=${loginId}><br>
-
 <button type="submit">등록하기</button>
 </form>
 </body>

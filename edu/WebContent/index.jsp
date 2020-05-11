@@ -12,6 +12,8 @@
 <body>
 <h1>PC버전 입니다</h1>
 환영<br>
-현재 시간${today}
+현재 시간${today}<br>
+
+<%out.print(getServletContext().getRealPath("/")); %>
 </body>
 </html>
