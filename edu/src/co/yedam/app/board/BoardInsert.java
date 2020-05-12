@@ -38,6 +38,9 @@ public class BoardInsert extends HttpServlet {
 		
 		dao.BoardInsert(vo);
 		
+		String contextPath = getServletContext().getContextPath();
+		response.sendRedirect(contextPath + "/BoardList.do");
+		
 		
 		
 	}

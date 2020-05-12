@@ -50,6 +50,7 @@ public class BoardDAO {
 				vo.setRegdt(rs.getString("regdt"));
 				vo.setSeq(rs.getInt("seq"));
 				vo.setTitle(rs.getString("title"));
+				vo.setName(rs.getString("name"));
 				list.add(vo);
 			}
 		} catch (SQLException e) {

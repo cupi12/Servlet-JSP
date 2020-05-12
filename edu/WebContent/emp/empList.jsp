@@ -11,7 +11,7 @@
 <body>
 	<!-- Navigation bar -->
 	<%@ include file="/common/menu.jsp"%>	
-	<a href="EmpInsert.do">사원 등록</a>
+	<a href="EmpList.do">사원 등록</a>
 	
 	<h1 align="center">EMP LIST</h1><br>
 	<table border="1" align="center">

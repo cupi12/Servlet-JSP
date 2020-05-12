@@ -73,7 +73,8 @@ public class EmpInsert extends HttpServlet {
 		empDAO.empInsert(vo);		
 		
 		String contextPath = getServletContext().getContextPath();
-		response.sendRedirect(contextPath + "/EmpList.do");
+		response.sendRedirect(contextPath + "EmpList.do");
+		
 	}
 
 }
