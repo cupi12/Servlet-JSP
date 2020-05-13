@@ -121,7 +121,7 @@ public class EmpDAO {
 		try {
 			conn = ConnectionManager.getConnnect();
 			String sql = "select a.department_id, department_name,"
-					+ " sum(salary) sal, count(*) cnt, avg(salary) avgsal " + " from departments a, hr.employees b"
+					+ " sum(salary) sal, count(*) cnt, avg(salary) avgsal " + " from hr.departments a, hr.employees b"
 					+ " where a.department_id = b.department_id" + " group by a.department_id, department_name";
 			pstmt = conn.prepareStatement(sql);
 			rs = pstmt.executeQuery();
@@ -129,9 +129,9 @@ public class EmpDAO {
 				Map<String, Object> map = new HashMap<String, Object>();
 				map.put("department_id", rs.getString("department_id"));
 				map.put("department_name", rs.getString("department_name"));
-				map.put("salary", rs.getString("sal"));
-				map.put("cnt", rs.getString("cnt"));
-				map.put("avgsal", rs.getString("avgsal"));
+				map.put("salary", rs.getDouble("sal"));
+				map.put("cnt", rs.getDouble("cnt"));
+				map.put("avgsal", rs.getString("avgsal"));				
 				list.add(map);
 			}
 		} catch (Exception e) {
