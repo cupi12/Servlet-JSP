@@ -1,3 +1,4 @@
+<%@page import="co.yedam.app.emp.DeptVO"%>
 <%@page import="co.yedam.app.emp.EmpVO"%>
 <%@page import="co.yedam.app.dept.model.DeptVO"%>
 <%@page import="co.yedam.app.emp.JobDAO"%>
