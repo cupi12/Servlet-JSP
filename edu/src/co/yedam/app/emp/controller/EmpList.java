@@ -11,8 +11,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import co.yedam.app.emp.EmpDAO;
-import co.yedam.app.emp.EmpVO;
+import co.yedam.app.emp.model.EmpDAO;
+import co.yedam.app.emp.model.EmpVO;
 
 /**
  * Servlet implementation class EmpList

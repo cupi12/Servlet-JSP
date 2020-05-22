@@ -1,4 +1,4 @@
-package co.yedam.app.emp;
+package co.yedam.app.emp.model;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -129,7 +129,7 @@ public class EmpDAO {
 				Map<String, Object> map = new HashMap<String, Object>();
 				map.put("department_id", rs.getString("department_id"));
 				map.put("department_name", rs.getString("department_name"));
-				map.put("salary", rs.getDouble("sal"));
+				map.put("salary", rs.getString("sal"));
 				map.put("cnt", rs.getDouble("cnt"));
 				map.put("avgsal", rs.getString("avgsal"));				
 				list.add(map);

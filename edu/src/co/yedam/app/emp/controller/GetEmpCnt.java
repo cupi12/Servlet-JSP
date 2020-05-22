@@ -11,39 +11,40 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import co.yedam.app.emp.model.EmpDAO;
+import net.sf.json.JSONArray;
 
-/**
- * Servlet implementation class EmpSal
- */
-@WebServlet("/EmpSal")
-public class EmpSal extends HttpServlet {
+@WebServlet("/GetEmpCnt.do")
+public class GetEmpCnt extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public EmpSal() {
+ 
+    public GetEmpCnt() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//1. 파라미터
-		
-		//2. 서비스 로직 처리(DAO)
-		List<Map<String, Object>> list = EmpDAO.getInstance().selectDeptSal();
-		//3. 결과 저장
-		request.setAttribute("salList", list); //속성 이름을 salList로 지정
-		//4. view페이지로 이동(jsp-forward, do-sendredirect)
-		request.getRequestDispatcher("/emp/empSalList.jsp").forward(request, response);
-		
-	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		List<Map<String, Object>> list = EmpDAO.getInstance().selectDeptSal();
+		//java 객체를 => json String [{"department_id:"~~~",cnt:s}]
+//		String result = "[";
+//		
+//		for(int i=0; i<list.size(); i++) {
+//			
+//			result += "{";
+//			result += "\"department_id\":";
+//			result += "\"" +list.get(i).get("department_id")+ "\",";
+//			result += "\"cnt\":";
+//			result += list.get(i).get("cnt");
+//			result += "}";
+//			if(i<list.size()-1) {
+//				result += ",";
+//			}
+//		}
+//		result +="]";
+		String result = JSONArray.fromObject( list ).toString();  
+		response.getWriter().print(result);
+	}
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
 

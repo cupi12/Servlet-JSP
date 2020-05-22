@@ -1,4 +1,4 @@
-package co.yedam.app.emp;
+package co.yedam.app.emp.model;
 
 import java.io.Serializable;
 

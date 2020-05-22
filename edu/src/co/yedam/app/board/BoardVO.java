@@ -7,9 +7,17 @@ public class BoardVO {
 	String regdt;
 	String id;
 	String name;
+	String fileName;
 	
 	
 	
+	
+	public String getFileName() {
+		return fileName;
+	}
+	public void setFileName(String fileName) {
+		this.fileName = fileName;
+	}
 	public String getName() {
 		return name;
 	}

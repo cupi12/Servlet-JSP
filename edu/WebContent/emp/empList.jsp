@@ -1,6 +1,6 @@
 <%@page import="java.util.List"%>
 <%@page import="java.util.ArrayList"%>
-<%@page import="co.yedam.app.emp.EmpVO"%>
+<%@page import="co.yedam.app.emp.model.EmpVO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>

@@ -11,10 +11,10 @@ import javax.servlet.http.HttpServletResponse;
 
 import co.yedam.app.emp.DeptDAO;
 import co.yedam.app.emp.DeptVO;
-import co.yedam.app.emp.EmpDAO;
-import co.yedam.app.emp.EmpVO;
 import co.yedam.app.emp.JobDAO;
 import co.yedam.app.emp.JobVO;
+import co.yedam.app.emp.model.EmpDAO;
+import co.yedam.app.emp.model.EmpVO;
 
 /**
  * Servlet implementation class EmpInsert
